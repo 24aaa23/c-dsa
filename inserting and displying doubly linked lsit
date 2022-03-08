@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+struct node
+{
+int data;
+node *next;
+node *prev;
+};
+int displaying_linked_list(node **head)
+  {
+    node *it=head;
+    while (it!=NULL)
+    {
+       cout<<it->data<<" ";
+      it=it->next;
+      }
+    cout<<endl;
+    return 0;
+     
+      
+      
+}
+  
+node *creating_doubly_linked_list(int ele)
+{
+ // cout<<"aman"<<endl;
+  int element=ele;
+  struct node *head;
+  node *head1,*newnode;
+    for(int i=0;i<element;i++)
+    {
+      int data1;
+      cin>>data1;
+       //cout<<"aman"<<endl;
+      newnode= new node();
+      newnode->data=data1;
+      newnode->prev=NULL;
+      newnode->next=NULL;
+      if(head==NULL)
+      {
+        head=newnode;
+        head1=newnode;
+      }
+      else{
+      newnode->next=head1->next;;
+        newnode->prev=head1;
+        head1->next=newnode;
+        head1=newnode;
+      
+      }
+      //cout<<"aman"<<endl;
+      }
+      return head;
+
+  }
+int main() 
+{
+ 
+  int element;
+  cout<<"ENTER THE no of ELEMENTS YOU WANT TO ENTER IN THE LINKED LIST"<<endl;
+  cin>>element;
+  node *start=creating_doubly_linked_list(element);
+  
+  displaying_linked_list(*start);
+      
+       return 0; 
+    }
